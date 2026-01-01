@@ -1,0 +1,11 @@
+export { default as AdminList } from './AdminList';
+export { default as Users } from './Users';
+export { default as Roles } from './Roles';
+export { default as HierarchyManagement } from './HierarchyManagement';
+export { default as Courses } from './Courses';
+export { default as Categories } from './Categories';
+export { default as Assessments } from './Assessments';
+export { default as AccessControl } from './AccessControl';
+export { default as AuditLogs } from './AuditLogs';
+export { default as Reports } from './Reports';
+export { default as SystemSettings } from './SystemSettings';

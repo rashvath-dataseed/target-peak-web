@@ -1,0 +1,43 @@
+.table-wrapper {
+  background: white;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.table-search {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.table-search input {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+}
+
+.dynamic-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.dynamic-table th {
+  background: #f0f0f0;
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.dynamic-table td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.action-cell button {
+  margin-right: 5px;
+  border: none;
+  padding: 5px 8px;
+  cursor: pointer;
+  color: white;
+  border-radius: 3px;
+}

@@ -1,0 +1,224 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Target Peak Super Admin - Enterprise Design System */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Primary Navy Blue - Enterprise look */
+    --primary: 220 60% 20%;
+    --primary-foreground: 210 40% 98%;
+    
+    /* Background */
+    --background: 220 20% 97%;
+    --foreground: 220 40% 13%;
+    
+    /* Cards - Clean white */
+    --card: 0 0% 100%;
+    --card-foreground: 220 40% 13%;
+    
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 40% 13%;
+    
+    /* Secondary - Light blue tint */
+    --secondary: 214 32% 91%;
+    --secondary-foreground: 220 40% 13%;
+    
+    /* Muted */
+    --muted: 214 32% 91%;
+    --muted-foreground: 220 15% 46%;
+    
+    /* Accent - Teal/Cyan */
+    --accent: 187 85% 43%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    
+    /* Borders */
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 220 60% 20%;
+    
+    --radius: 0.5rem;
+    
+    /* Sidebar - Dark navy */
+    --sidebar-background: 220 60% 15%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 210 40% 98%;
+    --sidebar-primary-foreground: 220 60% 15%;
+    --sidebar-accent: 220 55% 22%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 50% 25%;
+    --sidebar-ring: 187 85% 43%;
+    
+    /* Custom Enterprise Colors */
+    --navy: 220 60% 15%;
+    --navy-light: 220 55% 22%;
+    --teal: 187 85% 43%;
+    --teal-light: 187 70% 65%;
+    --success: 142 71% 45%;
+    --warning: 38 92% 50%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--navy-light)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--teal)), hsl(var(--teal-light)));
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(220 40% 13% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(220 40% 13% / 0.1), 0 2px 4px -2px hsl(220 40% 13% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(220 40% 13% / 0.1), 0 4px 6px -4px hsl(220 40% 13% / 0.1);
+    --shadow-card: 0 2px 8px 0 hsl(220 40% 13% / 0.08);
+    
+    /* Transitions */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 220 47% 13%;
+    --card-foreground: 210 40% 98%;
+    --popover: 220 47% 13%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 187 85% 43%;
+    --primary-foreground: 220 60% 15%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 187 85% 43%;
+    --accent-foreground: 220 60% 15%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 187 85% 43%;
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 187 85% 43%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-ring: 187 85% 43%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Analytics Card Styles */
+  .analytics-card {
+    @apply relative overflow-hidden rounded-lg bg-card p-6 transition-all duration-200 hover:shadow-lg;
+    box-shadow: var(--shadow-card);
+  }
+
+  .analytics-card::before {
+    content: '';
+    @apply absolute left-0 top-0 h-full w-1 rounded-l-lg;
+  }
+
+  .analytics-card.users::before {
+    @apply bg-gradient-to-b from-[hsl(var(--teal))] to-[hsl(var(--teal-light))];
+  }
+
+  .analytics-card.admins::before {
+    @apply bg-gradient-to-b from-[hsl(var(--primary))] to-[hsl(var(--navy-light))];
+  }
+
+  .analytics-card.courses::before {
+    @apply bg-gradient-to-b from-[hsl(var(--success))] to-emerald-400;
+  }
+
+  .analytics-card.revenue::before {
+    @apply bg-gradient-to-b from-[hsl(var(--warning))] to-amber-400;
+  }
+
+  /* Quick Action Card */
+  .action-card {
+    @apply flex cursor-pointer flex-col items-center justify-center gap-3 rounded-lg border border-border bg-card p-6 transition-all duration-200;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .action-card:hover {
+    @apply border-[hsl(var(--teal))] shadow-md;
+    transform: translateY(-2px);
+  }
+
+  .action-card:hover .action-icon {
+    @apply text-[hsl(var(--teal))];
+  }
+
+  /* Navigation item active state */
+  .nav-item-active {
+    @apply bg-sidebar-accent text-sidebar-accent-foreground;
+  }
+
+  /* Table row hover */
+  .table-row-hover:hover {
+    @apply bg-muted/50;
+  }
+
+  /* Status badges */
+  .status-badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+
+  .status-active {
+    @apply bg-emerald-100 text-emerald-700;
+  }
+
+  .status-inactive {
+    @apply bg-slate-100 text-slate-600;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

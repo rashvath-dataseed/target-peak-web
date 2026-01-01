@@ -1,0 +1,121 @@
+import { HierarchyLevel, Module } from '@/types/hierarchy.types';
+
+export const mockHierarchyLevels: HierarchyLevel[] = [
+  {
+    id: 'h1',
+    name: 'Regional Director',
+    level: 1,
+    parentId: null,
+    description: 'Top-level regional management',
+    adminCount: 3,
+    createdAt: '2024-01-01T00:00:00Z',
+  },
+  {
+    id: 'h2',
+    name: 'State Manager',
+    level: 2,
+    parentId: 'h1',
+    description: 'State-level administration',
+    adminCount: 8,
+    createdAt: '2024-01-05T00:00:00Z',
+  },
+  {
+    id: 'h3',
+    name: 'District Coordinator',
+    level: 3,
+    parentId: 'h2',
+    description: 'District-level coordination',
+    adminCount: 24,
+    createdAt: '2024-01-10T00:00:00Z',
+  },
+  {
+    id: 'h4',
+    name: 'Center Head',
+    level: 4,
+    parentId: 'h3',
+    description: 'Center-level operations',
+    adminCount: 56,
+    createdAt: '2024-01-15T00:00:00Z',
+  },
+  {
+    id: 'h5',
+    name: 'Faculty Lead',
+    level: 5,
+    parentId: 'h4',
+    description: 'Faculty management',
+    adminCount: 120,
+    createdAt: '2024-02-01T00:00:00Z',
+  },
+];
+
+export const mockModules: Module[] = [
+  {
+    id: 'm1',
+    name: 'User Management',
+    icon: 'Users',
+    description: 'Manage platform users',
+    subModules: [
+      { id: 'sm1-1', name: 'View Users', description: 'View user list' },
+      { id: 'sm1-2', name: 'Create User', description: 'Create new users' },
+      { id: 'sm1-3', name: 'Edit User', description: 'Modify user details' },
+      { id: 'sm1-4', name: 'Delete User', description: 'Remove users' },
+    ],
+  },
+  {
+    id: 'm2',
+    name: 'Course Management',
+    icon: 'BookOpen',
+    description: 'Manage courses and content',
+    subModules: [
+      { id: 'sm2-1', name: 'View Courses', description: 'Browse courses' },
+      { id: 'sm2-2', name: 'Create Course', description: 'Add new courses' },
+      { id: 'sm2-3', name: 'Edit Course', description: 'Modify course details' },
+      { id: 'sm2-4', name: 'Publish Course', description: 'Make courses live' },
+    ],
+  },
+  {
+    id: 'm3',
+    name: 'Reports',
+    icon: 'BarChart3',
+    description: 'View and generate reports',
+    subModules: [
+      { id: 'sm3-1', name: 'User Reports', description: 'User analytics' },
+      { id: 'sm3-2', name: 'Course Reports', description: 'Course analytics' },
+      { id: 'sm3-3', name: 'Revenue Reports', description: 'Financial reports' },
+    ],
+  },
+  {
+    id: 'm4',
+    name: 'Content',
+    icon: 'FileText',
+    description: 'Manage platform content',
+    subModules: [
+      { id: 'sm4-1', name: 'Banners', description: 'Banner management' },
+      { id: 'sm4-2', name: 'FAQs', description: 'FAQ management' },
+      { id: 'sm4-3', name: 'Announcements', description: 'Platform announcements' },
+    ],
+  },
+  {
+    id: 'm5',
+    name: 'Settings',
+    icon: 'Settings',
+    description: 'System configuration',
+    subModules: [
+      { id: 'sm5-1', name: 'General Settings', description: 'Basic configuration' },
+      { id: 'sm5-2', name: 'Email Templates', description: 'Email configuration' },
+      { id: 'sm5-3', name: 'Integrations', description: 'Third-party integrations' },
+    ],
+  },
+];
+
+export const getHierarchyLevels = (): Promise<HierarchyLevel[]> => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(mockHierarchyLevels), 500);
+  });
+};
+
+export const getModules = (): Promise<Module[]> => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(mockModules), 400);
+  });
+};
