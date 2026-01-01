@@ -17,20 +17,22 @@ export const mockApiError = async (message: string, delay: number = API_DELAY): 
 };
 
 // Token management (simulated)
-const TOKEN_KEY = 'target_peak_token';
-const USER_KEY = 'target_peak_user';
+import Cookies from "js-cookie";
+
+const TOKEN_KEY = "target_peak_token";
+const USER_KEY = "target_peak_profile";
 
 export const setToken = (token: string): void => {
-  localStorage.setItem(TOKEN_KEY, token);
+  Cookies.set(TOKEN_KEY, token, { expires: 7 });
 };
 
 export const getToken = (): string | null => {
-  return localStorage.getItem(TOKEN_KEY);
+  return Cookies.get(TOKEN_KEY) || null;
 };
 
 export const removeToken = (): void => {
-  localStorage.removeItem(TOKEN_KEY);
-  localStorage.removeItem(USER_KEY);
+  Cookies.remove(TOKEN_KEY);
+  Cookies.remove(USER_KEY);
 };
 
 export const isAuthenticated = (): boolean => {
@@ -38,10 +40,10 @@ export const isAuthenticated = (): boolean => {
 };
 
 export const setUser = (user: object): void => {
-  localStorage.setItem(USER_KEY, JSON.stringify(user));
+  Cookies.set(USER_KEY, JSON.stringify(user), { expires: 7 });
 };
 
 export const getUser = <T>(): T | null => {
-  const user = localStorage.getItem(USER_KEY);
+  const user = Cookies.get(USER_KEY);
   return user ? JSON.parse(user) : null;
 };
