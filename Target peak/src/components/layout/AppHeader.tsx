@@ -25,7 +25,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ title, onMenuClick }) => {
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    // navigate('/login');
   };
 
   const getInitials = (name: string) => {
