@@ -9,12 +9,34 @@ const NotFound = lazy(() => import("@/pages/auth/NotFound"));
 
 // Dashboard routes
 import { dashboardRoutes } from "@/pages/dashboard";
+import {
+  AllData,
+  AppRegisteredStudent,
+  Course,
+  EClasses,
+  Events,
+  Exam,
+  ExpiredCourse,
+  FailedPayment,
+  OmrStudent,
+  PaidStudent,
+  PromotionSetup,
+  Qualification,
+  Role,
+  Stream,
+  Subject,
+  SupportCategory,
+  UnitChapter,
+} from "@/pages/modules";
+import { User } from "lucide-react";
 
 // Admin routes
 const AdminList = lazy(() => import("@/pages/admin/AdminList"));
 const Users = lazy(() => import("@/pages/admin/Users"));
 const Roles = lazy(() => import("@/pages/admin/Roles"));
-const HierarchyManagement = lazy(() => import("@/pages/admin/HierarchyManagement"));
+const HierarchyManagement = lazy(
+  () => import("@/pages/admin/HierarchyManagement")
+);
 const Courses = lazy(() => import("@/pages/admin/Courses"));
 const Categories = lazy(() => import("@/pages/admin/Categories"));
 const Assessments = lazy(() => import("@/pages/admin/Assessments"));
@@ -97,10 +119,116 @@ export const routes = [
     element: SystemSettings,
     roles: ["super_admin"],
   },
-
-  // Dashboard routes (includes all module routes)
+  {
+    path: "/settings/support-category",
+    element: SupportCategory,
+    roles: ["super_admin"],
+  },
+  //General settings
+  {
+    path: "/settings/stream",
+    element: Stream,
+    roles: ["super_admin"],
+  },
+  {
+    path: "/settings/support-category",
+    element: SupportCategory,
+    roles: ["super_admin"],
+  },
+  {
+    path: "/settings/subject",
+    element: Subject,
+    roles: ["super_admin"],
+  },
+  {
+    path: "/settings/support-category",
+    element: SupportCategory,
+    roles: ["super_admin"],
+  },
+  {
+    path: "/settings/unit-chapter",
+    element: UnitChapter,
+    roles: ["super_admin"],
+  },
+  {
+    path: "/settings/qualification",
+    element: Qualification,
+    roles: ["super_admin"],
+  },
+  {
+    path: "/settings/role",
+    element: Role,
+    roles: ["super_admin"],
+  },
+  {
+    path: "/settings/events",
+    element: Events,
+    roles: ["super_admin"],
+  },
+  {
+    path: "/settings/promotion-setup",
+    element: PromotionSetup,
+    roles: ["super_admin"],
+  },
+  //Course settings
+  {
+    path: "/settings/course",
+    element: Course,
+    roles: ["super_admin"],
+  },
+  {
+    path: "/settings/exam",
+    element: Exam,
+    roles: ["super_admin"],
+  },
+  {
+    path: "/settings/e-classes",
+    element: EClasses,
+    roles: ["super_admin"],
+  },
+  //User settings
+  {
+    path: "/settings/user",
+    element: Users,
+  },
   ...dashboardRoutes,
-
+  //   Users
+  //  ├─ All Data
+  //  ├─ App Registered Student
+  //  ├─ OMR Student
+  //  ├─ Paid Student
+  //  ├─ Expired Course
+  //  └─ Failed / Pending Payment
+  {
+    path: "/users/all-data",
+    element: AllData,
+    roles: ["super_admin", "admin"],
+  },
+  {
+    path: "/users/app-registered",
+    element: AppRegisteredStudent,
+    roles: ["super_admin", "admin"],
+  },
+  {
+    path: "/users/omr-student",
+    element: OmrStudent,
+    roles: ["super_admin", "admin"],
+  },
+  {
+    path: "/users/paid-student",
+    element: PaidStudent,
+    roles: ["super_admin", "admin"],
+  },
+  {
+    path: "/users/expired-course",
+    element: ExpiredCourse,
+    roles: ["super_admin", "admin"],
+  },
+  {
+    path: "/users/failed-payment",
+    element: FailedPayment,
+    roles: ["super_admin", "admin"],
+  },
   // Fallback
   {
     path: "*",
