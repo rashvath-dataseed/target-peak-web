@@ -19,6 +19,7 @@ import {
   User,
   MessageCircle,
   Trophy,
+  HandHelping,
 } from "lucide-react";
 import { UserRole } from "@/types/auth.types";
 import { SUPER_ADMIN_MODULES } from "@/constants/modules";
@@ -486,6 +487,75 @@ export const APP_NAVIGATION: NavItem[] = [
         path: "/settings/progress-report",
         icon: Trophy,
         component: lazy(() => import("@/pages/modules/ProgressReport")),
+      },
+    ],
+  },
+  //result
+  {
+    id: "result",
+    title: "Result",
+    path: "/result",
+    icon: Trophy,
+    roles: ["super_admin"],
+    component: lazy(() => import("@/pages/modules/Result")),
+  },
+  // referal mobile support
+  {
+    id: "referal-mobile-support",
+    title: "Referal mobile support",
+    path: "/referal-mobile-support",
+    icon: Trophy,
+    roles: ["super_admin"],
+    component: lazy(() => import("@/pages/modules/ReferalMobileSupport")),
+  },
+  // support
+  // childrens
+  // -token details
+  // -support mobile
+  // support whatsapp
+  // -support mail
+  // support ai
+  {
+    id: "support",
+    title: "Support",
+    path: "/support",
+    icon: HandHelping,
+    roles: ["super_admin"],
+    children: [
+      {
+        id: "settings-token-details",
+        title: "Token details",
+        path: "/settings/token-details",
+        icon: Trophy,
+        component: lazy(() => import("@/pages/modules/TokenDetails")),
+      },
+      {
+        id: "settings-support-mobile",
+        title: "Support mobile",
+        path: "/settings/support-mobile",
+        icon: Trophy,
+        component: lazy(() => import("@/pages/modules/SupportMobile")),
+      },
+      {
+        id: "settings-support-whatsapp",
+        title: "Support whatsapp",
+        path: "/settings/support-whatsapp",
+        icon: Trophy,
+        component: lazy(() => import("@/pages/modules/SupportWhatsapp")),
+      },
+      {
+        id: "settings-support-mail",
+        title: "Support mail",
+        path: "/settings/support-mail",
+        icon: Trophy,
+        component: lazy(() => import("@/pages/modules/SupportMail")),
+      },
+      {
+        id: "settings-support-ai",
+        title: "Support ai",
+        path: "/settings/support-ai",
+        icon: Trophy,
+        component: lazy(() => import("@/pages/modules/SupportAi")),
       },
     ],
   },

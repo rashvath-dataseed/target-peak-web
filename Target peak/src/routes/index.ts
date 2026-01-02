@@ -8,7 +8,7 @@ const AccessDenied = lazy(() => import("@/pages/auth/AccessDenied"));
 const NotFound = lazy(() => import("@/pages/auth/NotFound"));
 
 // Dashboard routes
-import { dashboardRoutes } from "@/pages/dashboard";
+import { dashboardRoutes, TokenDetails } from "@/pages/dashboard";
 import {
   AllData,
   AppRegisteredStudent,
@@ -37,6 +37,11 @@ import Coupon from "@/pages/modules/Coupon";
 import Faq from "@/pages/modules/Faq";
 import activities from "@/pages/modules/activities";
 import LiveActivites from "@/pages/modules/LiveActivites";
+import Result from "@/pages/modules/Result";
+import ReferalMobileSupport from "@/pages/modules/ReferalMobileSupport";
+import SupportMobile from "@/pages/modules/SupportMobile";
+import SupportWhatsapp from "@/pages/modules/SupportWhatsapp";
+import SupportMail from "@/pages/modules/SupportMail";
 
 // Admin routes
 const AdminList = lazy(() => import("@/pages/admin/AdminList"));
@@ -287,6 +292,49 @@ export const routes = [
   {
     path: "/settings/progress-report",
     element: ProgressReport,
+    roles: ["super_admin"],
+  },
+  //result
+  {
+    path: "/result",
+    element: Result,
+    roles: ["super_admin"],
+  },
+  {
+    path: "/referal-mobile-support",
+    element: ReferalMobileSupport,
+    roles: ["super_admin"],
+  },
+  // support
+  // childrens
+  // -token details
+  // -support mobile
+  // support whatsapp
+  // -support mail
+  // support ai
+  {
+    path: "/settings/token-details",
+    element: TokenDetails,
+    roles: ["super_admin"],
+  },
+  {
+    path: "/settings/support-mobile",
+    element: SupportMobile,
+    roles: ["super_admin"],
+  },
+  {
+    path: "/settings/support-mail",
+    element: SupportMail,
+    roles: ["super_admin"],
+  },
+  {
+    path: "/settings/support-whatsapp",
+    element: SupportWhatsapp,
+    roles: ["super_admin"],
+  },
+  {
+    path: "/settings/support-ai",
+    element: SupportMail,
     roles: ["super_admin"],
   },
   // Fallback

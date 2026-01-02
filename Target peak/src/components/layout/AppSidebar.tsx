@@ -64,15 +64,26 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
     return user && item.roles.includes(user.role);
   };
 
+  // const toggleItem = (id: string) => {
+  //   setOpenItems((prev) => {
+  //     const next = new Set(prev);
+  //     if (next.has(id)) {
+  //       next.delete(id);
+  //     } else {
+  //       next.add(id);
+  //     }
+  //     return next;
+  //   });
+  // };
   const toggleItem = (id: string) => {
     setOpenItems((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        next.add(id);
+      // If the same item is clicked → close it
+      if (prev.has(id)) {
+        return new Set();
       }
-      return next;
+
+      // Otherwise → open ONLY this item
+      return new Set([id]);
     });
   };
 
@@ -149,8 +160,10 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
               />
             </button>
           </CollapsibleTrigger>
-          <CollapsibleContent className="mt-0.5">
-            {item.children?.map((child) => renderNavItem(child, depth + 1))}
+          <CollapsibleContent className="mt-1">
+            <div className="ml-3 rounded-md bg-white/5 px-1 py-1">
+              {item.children?.map((child) => renderNavItem(child, depth + 1))}
+            </div>
           </CollapsibleContent>
         </Collapsible>
       );
