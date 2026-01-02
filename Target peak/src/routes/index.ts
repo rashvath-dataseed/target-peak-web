@@ -18,8 +18,10 @@ import {
   Exam,
   ExpiredCourse,
   FailedPayment,
+  Institute,
   OmrStudent,
   PaidStudent,
+  ProgressReport,
   PromotionSetup,
   Qualification,
   Role,
@@ -28,7 +30,13 @@ import {
   SupportCategory,
   UnitChapter,
 } from "@/pages/modules";
-import { User } from "lucide-react";
+import { Trophy, User } from "lucide-react";
+import MasterHierarchy from "@/pages/modules/MasterHierarchy";
+import VerticalManage from "@/pages/modules/VerticalManage";
+import Coupon from "@/pages/modules/Coupon";
+import Faq from "@/pages/modules/Faq";
+import activities from "@/pages/modules/activities";
+import LiveActivites from "@/pages/modules/LiveActivites";
 
 // Admin routes
 const AdminList = lazy(() => import("@/pages/admin/AdminList"));
@@ -228,6 +236,58 @@ export const routes = [
     path: "/users/failed-payment",
     element: FailedPayment,
     roles: ["super_admin", "admin"],
+  },
+  //Master
+  {
+    path: "/settings/master-hierarchy",
+    element: MasterHierarchy,
+    roles: ["super_admin"],
+  },
+  {
+    path: "/settings/master-hierarchy-management",
+    element: HierarchyManagement,
+    roles: ["super_admin"],
+  },
+  // title: "Vertical Manage",
+  {
+    path: "/settings/vertical-manage",
+    element: VerticalManage,
+    roles: ["super_admin"],
+  },
+  // /settings/institute
+  {
+    path: "/settings/institute",
+    element: Institute,
+    roles: ["super_admin"],
+  },
+  // /settings/faq
+  {
+    path: "/settings/faq",
+    element: Faq,
+    roles: ["super_admin"],
+  },
+  // /settings/coupon
+  {
+    path: "/settings/coupon",
+    element: Coupon,
+    roles: ["super_admin"],
+  },
+  //activities
+  {
+    path: "/settings/chat",
+    element: activities,
+    roles: ["super_admin"],
+  },
+  {
+    path: "/settings/live-activity",
+    element: LiveActivites,
+    roles: ["super_admin"],
+  },
+
+  {
+    path: "/settings/progress-report",
+    element: ProgressReport,
+    roles: ["super_admin"],
   },
   // Fallback
   {

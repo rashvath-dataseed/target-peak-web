@@ -17,6 +17,8 @@ import {
   FlaskConical,
   Grid,
   User,
+  MessageCircle,
+  Trophy,
 } from "lucide-react";
 import { UserRole } from "@/types/auth.types";
 import { SUPER_ADMIN_MODULES } from "@/constants/modules";
@@ -334,7 +336,7 @@ export const APP_NAVIGATION: NavItem[] = [
   {
     id: "user-settings",
     title: "User Settings",
-    path: "/settings/user",
+    // path: "/settings/user",
     icon: User,
     roles: ["super_admin"],
     children: [
@@ -348,12 +350,7 @@ export const APP_NAVIGATION: NavItem[] = [
     ],
   },
   //   Users
-  //  ├─ All Data
-  //  ├─ App Registered Student
-  //  ├─ OMR Student
-  //  ├─ Paid Student
-  //  ├─ Expired Course
-  //  └─ Failed / Pending Payment
+
   {
     id: "users-group",
     title: "Users",
@@ -402,7 +399,94 @@ export const APP_NAVIGATION: NavItem[] = [
         component: lazy(() => import("@/pages/modules/FailedPayment")),
         roles: ["super_admin", "admin"],
       },
+    ],
+  },
+  //  //master
+  {
+    id: "master",
+    title: "Master",
+    path: "/settings/master",
+    icon: Shield,
+    roles: ["super_admin"],
+    children: [
+      {
+        id: "settings-user",
+        title: "Mange hierarchy",
+        path: "/settings/master-hierarchy",
+        component: lazy(() => import("@/pages/modules/MasterHierarchy")),
+      },
+      {
+        id: "settings-hierarchy-management",
+        title: "Hierarchy Management",
+        path: "/settings/master-hierarchy-management",
+        component: lazy(() => import("@/pages/admin/HierarchyManagement")),
+      },
+      {
+        id: "settings-vertical-manage",
+        title: "Vertical Manage",
+        path: "/settings/vertical-manage",
+        component: lazy(() => import("@/pages/modules/VerticalManage")),
+      },
 
+      {
+        id: "settings-institute",
+        title: "institute",
+        path: "/settings/institute",
+        component: lazy(() => import("@/pages/modules/Institute")),
+      },
+      {
+        id: "settings-faq",
+        title: "Faq",
+        path: "/settings/faq",
+        component: lazy(() => import("@/pages/modules/Faq")),
+      },
+
+      {
+        id: "settings-coupon",
+        title: "Coupon",
+        path: "/settings/coupon",
+        component: lazy(() => import("@/pages/modules/Coupon")),
+      },
+    ],
+  },
+
+  {
+    id: "user-activities",
+    title: "Activities",
+    path: "/settings/activities",
+    icon: MessageCircle,
+    roles: ["super_admin"],
+    children: [
+      {
+        id: "settings-chat",
+        title: "Live chat",
+        path: "/settings/chat",
+        component: lazy(() => import("@/pages/modules/activities")),
+      },
+
+      {
+        id: "settings-live-activity",
+        title: "Live activity",
+        path: "/settings/live-activity",
+        component: lazy(() => import("@/pages/modules/LiveActivites")),
+      },
+    ],
+  },
+  //view result
+  {
+    id: "view-result",
+    title: "View result",
+    path: "/view-result",
+    icon: Trophy,
+    roles: ["super_admin"],
+    children: [
+      {
+        id: "settings-progress-report",
+        title: "Progress report",
+        path: "/settings/progress-report",
+        icon: Trophy,
+        component: lazy(() => import("@/pages/modules/ProgressReport")),
+      },
     ],
   },
 ];

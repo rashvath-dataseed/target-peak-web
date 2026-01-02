@@ -94,15 +94,11 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
             ))
       );
 
-    // Indentation for nested items
+    // Compact indentation for nested items
     const paddingLeft = collapsed ? undefined : `${depth * 12 + 12}px`;
 
     if (hasChildren) {
       if (collapsed) {
-        // In collapsed mode, we don't show children in accordion,
-        // typically you'd use a Popover or HoverCard, but for now we just show the parent icon
-        // or we could disable collapsing for items with children if that's the UX pattern.
-        // A common pattern is to show the icon and a tooltip.
         return (
           <Tooltip key={item.id} delayDuration={0}>
             <TooltipTrigger asChild>
@@ -110,15 +106,15 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
                 className={cn(
                   "flex items-center justify-center p-2 rounded-lg cursor-pointer transition-colors mb-1",
                   isChildActive
-                    ? "bg-primary/10 text-primary"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                    ? "bg-white/10 text-white"
+                    : "text-gray-400 hover:bg-white/5 hover:text-gray-300"
                 )}
               >
-                {Icon && <Icon className="h-5 w-5" />}
+                {Icon && <Icon className="h-4 w-4" />}
               </div>
             </TooltipTrigger>
-            <TooltipContent side="right" className="font-medium">
-              {item.title} (Expand sidebar to view submenus)
+            <TooltipContent side="right" className="text-xs">
+              {item.title}
             </TooltipContent>
           </Tooltip>
         );
@@ -134,27 +130,26 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
           <CollapsibleTrigger asChild>
             <button
               className={cn(
-                "flex w-full items-center justify-between p-2 rounded-lg text-sm font-medium transition-colors mb-1",
+                "flex w-full items-center justify-between py-2 px-3 rounded-md text-xs font-medium transition-colors",
                 isChildActive || isOpen
-                  ? "text-white"
-                  : "text-gray-300 hover:bg-white/10 hover:text-white",
-                depth > 0 && "text-sm"
+                  ? "bg-white/10 text-white"
+                  : "text-gray-400 hover:bg-white/5 hover:text-gray-300"
               )}
               style={{ paddingLeft }}
             >
-              <div className="flex items-center gap-3">
-                {Icon && <Icon className="h-5 w-5 flex-shrink-0" />}
-                <span>{item.title}</span>
+              <div className="flex items-center gap-2.5">
+                {Icon && <Icon className="h-4 w-4 flex-shrink-0" />}
+                <span className="truncate">{item.title}</span>
               </div>
               <ChevronRight
                 className={cn(
-                  "h-4 w-4 transition-transform duration-200",
+                  "h-3.5 w-3.5 flex-shrink-0 transition-transform duration-200",
                   isOpen && "rotate-90"
                 )}
               />
             </button>
           </CollapsibleTrigger>
-          <CollapsibleContent className="space-y-1 bg-white/5 rounded-b-lg">
+          <CollapsibleContent className="mt-0.5">
             {item.children?.map((child) => renderNavItem(child, depth + 1))}
           </CollapsibleContent>
         </Collapsible>
@@ -167,15 +162,15 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
         to={item.path || "#"}
         onClick={onItemClick}
         className={cn(
-          "flex items-center gap-3 rounded-lg p-2 text-sm font-medium transition-colors mb-1",
+          "flex items-center gap-2.5 rounded-md py-2 px-3 text-xs font-medium transition-colors",
           isActive
-            ? "bg-black text-white shadow-sm"
-            : "text-gray-300 hover:bg-white/10 hover:text-white"
+            ? "bg-white text-slate-900"
+            : "text-gray-400 hover:bg-white/5 hover:text-gray-300"
         )}
         style={{ paddingLeft: collapsed ? undefined : paddingLeft }}
       >
-        {Icon && <Icon className="h-5 w-5 flex-shrink-0" />}
-        {!collapsed && <span>{item.title}</span>}
+        {Icon && <Icon className="h-4 w-4 flex-shrink-0" />}
+        {!collapsed && <span className="truncate">{item.title}</span>}
       </Link>
     );
 
@@ -185,7 +180,9 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
           <TooltipTrigger asChild>
             <div className="flex justify-center">{LinkComponent}</div>
           </TooltipTrigger>
-          <TooltipContent side="right">{item.title}</TooltipContent>
+          <TooltipContent side="right" className="text-xs">
+            {item.title}
+          </TooltipContent>
         </Tooltip>
       );
     }
@@ -194,7 +191,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
   };
 
   return (
-    <nav className="space-y-1 px-2 py-2">
+    <nav className="space-y-0.5 px-2 py-2">
       {APP_NAVIGATION.map((item) => renderNavItem(item))}
     </nav>
   );
