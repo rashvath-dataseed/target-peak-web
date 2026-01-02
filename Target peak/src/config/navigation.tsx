@@ -302,7 +302,6 @@ export const APP_NAVIGATION: NavItem[] = [
     ],
   },
   //Course
-
   {
     id: "course-settings",
     title: "Course Settings",
@@ -331,8 +330,7 @@ export const APP_NAVIGATION: NavItem[] = [
     ],
   },
 
-  // User
-
+  // User Settings
   {
     id: "user-settings",
     title: "User Settings",
@@ -404,6 +402,7 @@ export const APP_NAVIGATION: NavItem[] = [
         component: lazy(() => import("@/pages/modules/FailedPayment")),
         roles: ["super_admin", "admin"],
       },
+
     ],
   },
 ];
