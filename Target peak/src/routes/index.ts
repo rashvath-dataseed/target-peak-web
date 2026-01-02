@@ -9,54 +9,60 @@ const NotFound = lazy(() => import("@/pages/auth/NotFound"));
 
 // Dashboard routes
 import { dashboardRoutes, TokenDetails } from "@/pages/dashboard";
-import {
-  AllData,
-  AppRegisteredStudent,
-  Course,
-  EClasses,
-  Events,
-  Exam,
-  ExpiredCourse,
-  FailedPayment,
-  Institute,
-  OmrStudent,
-  PaidStudent,
-  ProgressReport,
-  PromotionSetup,
-  Qualification,
-  Role,
-  Stream,
-  Subject,
-  SupportCategory,
-  UnitChapter,
-} from "@/pages/modules";
-import { Trophy, User } from "lucide-react";
-import MasterHierarchy from "@/pages/modules/MasterHierarchy";
-import VerticalManage from "@/pages/modules/VerticalManage";
-import Coupon from "@/pages/modules/Coupon";
-import Faq from "@/pages/modules/Faq";
-import activities from "@/pages/modules/activities";
-import LiveActivites from "@/pages/modules/LiveActivites";
-import Result from "@/pages/modules/Result";
-import ReferalMobileSupport from "@/pages/modules/ReferalMobileSupport";
-import SupportMobile from "@/pages/modules/SupportMobile";
-import SupportWhatsapp from "@/pages/modules/SupportWhatsapp";
-import SupportMail from "@/pages/modules/SupportMail";
 
-// Admin routes
-const AdminList = lazy(() => import("@/pages/admin/AdminList"));
-const Users = lazy(() => import("@/pages/admin/Users"));
-const Roles = lazy(() => import("@/pages/admin/Roles"));
-const HierarchyManagement = lazy(
-  () => import("@/pages/admin/HierarchyManagement")
+// Module routes (Refactored)
+const AllData = lazy(() => import("@/pages/users/AllData"));
+const AppRegisteredStudent = lazy(
+  () => import("@/pages/users/AppRegisteredStudent")
 );
-const Courses = lazy(() => import("@/pages/admin/Courses"));
-const Categories = lazy(() => import("@/pages/admin/Categories"));
-const Assessments = lazy(() => import("@/pages/admin/Assessments"));
-const AccessControl = lazy(() => import("@/pages/admin/AccessControl"));
-const AuditLogs = lazy(() => import("@/pages/admin/AuditLogs"));
-const Reports = lazy(() => import("@/pages/admin/Reports"));
-const SystemSettings = lazy(() => import("@/pages/admin/SystemSettings"));
+const Course = lazy(() => import("@/pages/courses/CourseSettings"));
+const EClasses = lazy(() => import("@/pages/courses/EClasses"));
+const Events = lazy(() => import("@/pages/settings/Events"));
+const Exam = lazy(() => import("@/pages/courses/Exam"));
+const ExpiredCourse = lazy(() => import("@/pages/courses/ExpiredCourse"));
+const FailedPayment = lazy(() => import("@/pages/users/FailedPayment"));
+const Institute = lazy(() => import("@/pages/master/Institute"));
+const OmrStudent = lazy(() => import("@/pages/users/OmrStudent"));
+const PaidStudent = lazy(() => import("@/pages/users/PaidStudent"));
+const ProgressReport = lazy(() => import("@/pages/reports/ProgressReport"));
+const PromotionSetup = lazy(() => import("@/pages/settings/PromotionSetup"));
+const Qualification = lazy(() => import("@/pages/settings/Qualification"));
+const Role = lazy(() => import("@/pages/settings/RoleSettings"));
+const Stream = lazy(() => import("@/pages/settings/Stream"));
+const Subject = lazy(() => import("@/pages/settings/Subject"));
+const SupportCategory = lazy(() => import("@/pages/support/SupportCategory"));
+const UnitChapter = lazy(() => import("@/pages/settings/UnitChapter"));
+
+// Master / Support / Activities
+const MasterHierarchy = lazy(() => import("@/pages/master/MasterHierarchy"));
+const VerticalManage = lazy(() => import("@/pages/master/VerticalManage"));
+const Coupon = lazy(() => import("@/pages/master/Coupon"));
+const Faq = lazy(() => import("@/pages/master/Faq"));
+const activities = lazy(() => import("@/pages/activities/Chat"));
+const LiveActivites = lazy(() => import("@/pages/activities/LiveActivities"));
+const Result = lazy(() => import("@/pages/results/Result"));
+const ReferalMobileSupport = lazy(
+  () => import("@/pages/support/ReferalMobileSupport")
+);
+const SupportMobile = lazy(() => import("@/pages/support/SupportMobile"));
+const SupportWhatsapp = lazy(() => import("@/pages/support/SupportWhatsapp"));
+const SupportMail = lazy(() => import("@/pages/support/SupportMail"));
+const SupportAi = lazy(() => import("@/pages/support/SupportAi"));
+
+// Admin routes (Moved to features)
+const AdminList = lazy(() => import("@/pages/users/AdminList"));
+const Users = lazy(() => import("@/pages/users/Users"));
+const Roles = lazy(() => import("@/pages/settings/Roles"));
+const HierarchyManagement = lazy(
+  () => import("@/pages/master/HierarchyManagement")
+);
+const Courses = lazy(() => import("@/pages/courses/CoursesList"));
+const Categories = lazy(() => import("@/pages/master/Categories"));
+const Assessments = lazy(() => import("@/pages/courses/Assessments"));
+const AccessControl = lazy(() => import("@/pages/users/AccessControl"));
+const AuditLogs = lazy(() => import("@/pages/reports/AuditLogs"));
+const Reports = lazy(() => import("@/pages/reports/Reports"));
+const SystemSettings = lazy(() => import("@/pages/settings/SystemSettings"));
 
 export const routes = [
   // Public routes
@@ -334,7 +340,7 @@ export const routes = [
   },
   {
     path: "/settings/support-ai",
-    element: SupportMail,
+    element: SupportAi, // Fixed typo in previous file content which mapped SupportAi to SupportMail
     roles: ["super_admin"],
   },
   // Fallback

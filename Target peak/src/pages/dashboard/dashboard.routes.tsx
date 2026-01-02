@@ -8,54 +8,48 @@ const pageMap: Record<string, React.LazyExoticComponent<React.FC>> = {
     () => import("@/pages/dashboard/TokenDetails")
   ),
   "/dashboard/application-error": lazy(
-    () => import("@/pages/modules/ApplicationError")
+    () => import("@/pages/common/ApplicationError")
   ),
-  "/dashboard/stream": lazy(() => import("@/pages/modules/Stream")),
+  "/dashboard/stream": lazy(() => import("@/pages/settings/Stream")),
   "/dashboard/questions-error": lazy(
-    () => import("@/pages/modules/QuestionsError")
+    () => import("@/pages/common/QuestionsError")
   ),
   "/dashboard/jio-offer-report": lazy(
-    () => import("@/pages/modules/JioOfferReport")
+    () => import("@/pages/reports/JioOfferReport")
   ),
   "/dashboard/support-category": lazy(
-    () => import("@/pages/modules/SupportCategory")
+    () => import("@/pages/support/SupportCategory")
   ),
-  "/dashboard/subject": lazy(() => import("@/pages/modules/Subject")),
-  "/dashboard/unit-chapter": lazy(
-    () => import("@/pages/modules/UnitChapter")
-  ),
-  "/dashboard/institute": lazy(() => import("@/pages/modules/Institute")),
-  "/dashboard/course": lazy(() => import("@/pages/modules/Course")),
-  "/dashboard/exam": lazy(() => import("@/pages/modules/Exam")),
-  "/dashboard/e-classes": lazy(() => import("@/pages/modules/EClasses")),
+  "/dashboard/subject": lazy(() => import("@/pages/settings/Subject")),
+  "/dashboard/unit-chapter": lazy(() => import("@/pages/settings/UnitChapter")),
+  "/dashboard/institute": lazy(() => import("@/pages/master/Institute")),
+  "/dashboard/course": lazy(() => import("@/pages/courses/CourseSettings")),
+  "/dashboard/exam": lazy(() => import("@/pages/courses/Exam")),
+  "/dashboard/e-classes": lazy(() => import("@/pages/courses/EClasses")),
   "/dashboard/qualification": lazy(
-    () => import("@/pages/modules/Qualification")
+    () => import("@/pages/settings/Qualification")
   ),
-  "/dashboard/user": lazy(() => import("@/pages/modules/User")),
-  "/dashboard/role": lazy(() => import("@/pages/modules/Role")),
-  "/dashboard/sanstha": lazy(() => import("@/pages/modules/Sanstha")),
-  "/dashboard/all-data": lazy(() => import("@/pages/modules/AllData")),
+  "/dashboard/user": lazy(() => import("@/pages/users/UserSettings")),
+  "/dashboard/role": lazy(() => import("@/pages/settings/RoleSettings")),
+  "/dashboard/sanstha": lazy(() => import("@/pages/master/Sanstha")),
+  "/dashboard/all-data": lazy(() => import("@/pages/users/AllData")),
   "/dashboard/app-registered-student": lazy(
-    () => import("@/pages/modules/AppRegisteredStudent")
+    () => import("@/pages/users/AppRegisteredStudent")
   ),
   "/dashboard/progress-report": lazy(
-    () => import("@/pages/modules/ProgressReport")
+    () => import("@/pages/reports/ProgressReport")
   ),
-  "/dashboard/paid-student": lazy(
-    () => import("@/pages/modules/PaidStudent")
-  ),
-  "/dashboard/events": lazy(() => import("@/pages/modules/Events")),
-  "/dashboard/omr-student": lazy(
-    () => import("@/pages/modules/OmrStudent")
-  ),
+  "/dashboard/paid-student": lazy(() => import("@/pages/users/PaidStudent")),
+  "/dashboard/events": lazy(() => import("@/pages/settings/Events")),
+  "/dashboard/omr-student": lazy(() => import("@/pages/users/OmrStudent")),
   "/dashboard/expired-course": lazy(
-    () => import("@/pages/modules/ExpiredCourse")
+    () => import("@/pages/courses/ExpiredCourse")
   ),
   "/dashboard/failed-payment": lazy(
-    () => import("@/pages/modules/FailedPayment")
+    () => import("@/pages/users/FailedPayment")
   ),
   "/dashboard/promotion-setup": lazy(
-    () => import("@/pages/modules/PromotionSetup")
+    () => import("@/pages/settings/PromotionSetup")
   ),
 };
 
