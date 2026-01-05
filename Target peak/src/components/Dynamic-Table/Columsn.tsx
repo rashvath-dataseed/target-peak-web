@@ -57,41 +57,25 @@ export type BannerRow = {
   validTo: string;
   mediaUrl: string;
 };
-
-export const BannerColumns: {
-  columns: Column<BannerRow>[];
-  actions: Action<BannerRow>[];
-} = {
+export const BannerColumns = (
+  onEdit: (row: any) => void,
+  onDelete: (row: any) => void
+): {
+  columns: Column<any>[];
+  actions: Action<any>[];
+} => ({
   columns: [
     {
       key: "srNo",
       header: "Sr No",
       render: (_, index) => index + 1,
     },
-    {
-      key: "sansthaName",
-      header: "Sanstha Name",
-    },
-    {
-      key: "page",
-      header: "Page",
-    },
-    {
-      key: "type",
-      header: "Type",
-    },
-    {
-      key: "uploadType",
-      header: "Upload Type",
-    },
-    {
-      key: "validFrom",
-      header: "Valid From",
-    },
-    {
-      key: "validTo",
-      header: "Valid To",
-    },
+    { key: "sansthaName", header: "Sanstha Name" },
+    { key: "page", header: "Page" },
+    { key: "type", header: "Type" },
+    { key: "uploadType", header: "Upload Type" },
+    { key: "validFrom", header: "Valid From" },
+    { key: "validTo", header: "Valid To" },
     {
       key: "mediaUrl",
       header: "Media",
@@ -108,8 +92,13 @@ export const BannerColumns: {
   actions: [
     {
       label: <Pencil size={14} />,
-      onClick: (row) => console.log("Edit Banner", row),
+      onClick: onEdit,
       className: "bg-blue-500 text-white",
     },
+    {
+      label: <Trash2 size={14} />,
+      onClick: onDelete,
+      className: "bg-red-500 text-white",
+    },
   ],
-};
+});
