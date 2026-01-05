@@ -8,7 +8,8 @@ export type FieldType =
   | "select"
   | "checkbox"
   | "radio"
-  | "date";
+  | "date"
+  | "file";
 
 export interface SelectOption {
   label: string;
@@ -18,7 +19,7 @@ export interface SelectOption {
 export interface FieldConfig {
   name: string;
   label: string;
-  type: FieldType;
+  type?: FieldType;
   placeholder?: string;
   required?: boolean;
   disabled?: boolean;
@@ -43,6 +44,7 @@ export interface FormConfig {
   columns?: number; // Number of columns in grid layout (default: 1)
   gap?: number; // Gap between fields in pixels (default: 16)
   submitLabel?: string;
+  type?: "add" | "edit";
   cancelLabel?: string;
   onSubmit: (data: Record<string, any>) => void | Promise<void>;
   onCancel?: () => void;

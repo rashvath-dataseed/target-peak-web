@@ -301,6 +301,12 @@ export const APP_NAVIGATION: NavItem[] = [
         path: "/settings/promotion-setup",
         component: lazy(() => import("@/pages/settings/PromotionSetup")),
       },
+      {
+        id: "settings-banners",
+        title: "Banners",
+        path: "/settings/banners",
+        component: lazy(() => import("@/pages/settings/Banners")),
+      },
     ],
   },
   //Course

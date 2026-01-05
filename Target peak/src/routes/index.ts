@@ -9,6 +9,7 @@ const NotFound = lazy(() => import("@/pages/auth/NotFound"));
 
 // Dashboard routes
 import { dashboardRoutes, TokenDetails } from "@/pages/dashboard";
+import Banners from "@/pages/settings/Banners";
 
 // Module routes (Refactored)
 const AllData = lazy(() => import("@/pages/users/AllData"));
@@ -292,6 +293,11 @@ export const routes = [
   {
     path: "/settings/live-activity",
     element: LiveActivites,
+    roles: ["super_admin"],
+  },
+  {
+    path: "/settings/banners",
+    element: Banners,
     roles: ["super_admin"],
   },
 
