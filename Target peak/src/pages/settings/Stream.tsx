@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { SupportCategoryColumns } from "@/components/Dynamic-Table/Columsn";
+import DynamicTable from "@/components/Dynamic-Table/DynamicTable";
 const Stream = () => {
   return (
     <div className="space-y-6">
@@ -7,12 +8,15 @@ const Stream = () => {
         <h1 className="text-3xl font-bold tracking-tight">STREAM</h1>
       </div>
       <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
-        <p className="text-muted-foreground">
-          STREAM module content goes here.
-        </p>
+        <DynamicTable
+          columns={SupportCategoryColumns.columns}
+          data={[]}
+          actions={SupportCategoryColumns.actions}
+        />
       </div>
     </div>
   );
 };
 
 export default Stream;
+

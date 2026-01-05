@@ -1,3 +1,5 @@
+import React from "react";
+
 export type Column<T> = {
   key: keyof T | string;
   header: string;
@@ -6,7 +8,8 @@ export type Column<T> = {
 };
 
 export type Action<T> = {
-  icon: React.ReactNode;
+  label: React.ReactNode;
+  icon?: React.ReactNode;
   onClick: (row: T) => void;
-  color?: string;
+  className?: string;
 };
