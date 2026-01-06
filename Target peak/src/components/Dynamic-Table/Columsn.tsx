@@ -57,6 +57,7 @@ export type BannerRow = {
   validTo: string;
   mediaUrl: string;
 };
+//
 export const BannerColumns = (
   onEdit: (row: any) => void,
   onDelete: (row: any) => void
