@@ -50,14 +50,14 @@ export const SupportCategoryColumns: {
 export type BannerRow = {
   bannerId: number;
   sansthaName: string;
-  page: string;
+  // page: string;
   type: string;
   uploadType: string;
   validFrom: string;
   validTo: string;
   mediaUrl: string;
 };
-//
+// Banner Columns
 export const BannerColumns = (
   onEdit: (row: any) => void,
   onDelete: (row: any) => void
@@ -72,7 +72,7 @@ export const BannerColumns = (
       render: (_, index) => index + 1,
     },
     { key: "sansthaName", header: "Sanstha Name" },
-    { key: "page", header: "Page" },
+    // { key: "page", header: "Page" },
     { key: "type", header: "Type" },
     { key: "uploadType", header: "Upload Type" },
     { key: "validFrom", header: "Valid From" },
