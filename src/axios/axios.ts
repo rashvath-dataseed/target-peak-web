@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "http://165.232.181.49:3001",
+  baseURL: "https://targetpeakdevaws.thestorywallcafe.com",
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
