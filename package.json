@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "cross-env VITE_ENV=development VITE_API_URL=https://targetpeakdevaws.thestorywallcafe.com VITE_APP_NAME=\"Admin Panel Dev\" VITE_APP_VERSION=\"1.0.0\" VITE_ENABLE_LOGS=true vite",
-    "build:dev": "cross-env VITE_ENV=development VITE_API_URL=https://dev-api.example.com VITE_APP_NAME=\"Admin Panel Dev\" VITE_APP_VERSION=\"1.0.0\" VITE_ENABLE_LOGS=true vite build",
-    "build:stage": "cross-env VITE_ENV=staging VITE_API_URL=https://stage-api.example.com VITE_APP_NAME=\"Admin Panel Stage\" VITE_APP_VERSION=\"1.0.0\" VITE_ENABLE_LOGS=false vite build",
-    "build:prod": "cross-env VITE_ENV=production VITE_API_URL=https://api.example.com VITE_APP_NAME=\"Admin Panel\" VITE_APP_VERSION=\"1.0.0\" VITE_ENABLE_LOGS=false vite build",
+    "build:dev": "cross-env VITE_ENV=development VITE_API_URL=https://targetpeakdevaws.thestorywallcafe.com VITE_APP_NAME=\"Admin Panel Dev\" VITE_APP_VERSION=\"1.0.0\" VITE_ENABLE_LOGS=true vite build",
+    "build:stage": "cross-env VITE_ENV=staging VITE_API_URL=https://targetpeakdevaws.thestorywallcafe.com VITE_APP_NAME=\"Admin Panel Stage\" VITE_APP_VERSION=\"1.0.0\" VITE_ENABLE_LOGS=false vite build",
+    "build:prod": "cross-env VITE_ENV=production VITE_API_URL=https://targetpeakdevaws.thestorywallcafe.com VITE_APP_NAME=\"Admin Panel\" VITE_APP_VERSION=\"1.0.0\" VITE_ENABLE_LOGS=false vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
