@@ -7,39 +7,39 @@ import { FormConfig } from "@/components/form/form.types";
 import { useToast } from "@/hooks/use-toast";
 
 import {
-  SupportWhatsappColumns,
-  SupportWhatsappRow,
+  LanguageColumns,
+  LanguageRow,
 } from "@/components/Dynamic-Table/Columsn";
 
 import {
-  getAllSupportNumbers,
-  createSupportNumber,
-  updateSupportNumber,
-  deleteSupportNumber,
+  getAllLanguages,
+  createLanguage,
+  updateLanguage,
+  deleteLanguage,
 } from "./Services/api";
 
-const SupportMobile = () => {
+const Language = () => {
   const { toast } = useToast();
 
-  const [data, setData] = useState<SupportWhatsappRow[]>([]);
+  const [data, setData] = useState<LanguageRow[]>([]);
   const [loading, setLoading] = useState(false);
   const [mode, setMode] = useState<"list" | "add" | "edit">("list");
-  const [selectedRow, setSelectedRow] = useState<SupportWhatsappRow | null>(
+  const [selectedLanguage, setSelectedLanguage] = useState<LanguageRow | null>(
     null
   );
 
   /* FETCH */
 
-  const fetchNumbers = async () => {
+  const fetchLanguages = async () => {
     try {
       setLoading(true);
-      const res = await getAllSupportNumbers("mobile");
+      const res = await getAllLanguages(true);
       setData(res.data.data);
-    } catch {
+    } catch (err: any) {
       toast({
         variant: "destructive",
         title: "Error",
-        description: "Failed to fetch mobile numbers",
+        description: "Failed to fetch languages",
       });
     } finally {
       setLoading(false);
@@ -47,31 +47,32 @@ const SupportMobile = () => {
   };
 
   useEffect(() => {
-    fetchNumbers();
+    fetchLanguages();
   }, []);
 
   /* ACTIONS */
 
-  const handleEdit = (row: SupportWhatsappRow) => {
-    setSelectedRow(row);
+  const handleEdit = (row: LanguageRow) => {
+    setSelectedLanguage(row);
     setMode("edit");
   };
 
-  const handleDelete = async (row: SupportWhatsappRow) => {
-    if (!confirm("Delete this number?")) return;
+  const handleDelete = async (row: LanguageRow) => {
+    if (!confirm("Are you sure you want to delete this language?")) return;
 
     try {
-      await deleteSupportNumber(row.id);
+      await deleteLanguage(row.id);
       toast({
-        title: "Deleted",
-        description: "Mobile number removed successfully",
+        title: "Success",
+        description: "Language deleted successfully",
       });
-      fetchNumbers();
-    } catch {
+      fetchLanguages();
+    } catch (err: any) {
       toast({
         variant: "destructive",
-        title: "Delete failed",
-        description: "Unable to delete mobile number",
+        title: "Delete Failed",
+        description:
+          err?.response?.data?.message || "Unable to delete language",
       });
     }
   };
@@ -80,34 +81,28 @@ const SupportMobile = () => {
 
   const handleSubmit = async (formData: any) => {
     try {
-      if (mode === "edit" && selectedRow) {
-        await updateSupportNumber(selectedRow.id, {
-          ...formData,
-          type: "mobile",
-        });
+      if (mode === "edit" && selectedLanguage) {
+        await updateLanguage(selectedLanguage.id, formData);
         toast({
           title: "Updated",
-          description: "Mobile number updated successfully",
+          description: "Language updated successfully",
         });
       } else {
-        await createSupportNumber({
-          ...formData,
-          type: "mobile",
-        });
+        await createLanguage(formData);
         toast({
-          title: "Added",
-          description: "Mobile number added successfully",
+          title: "Created",
+          description: "Language added successfully",
         });
       }
 
       setMode("list");
-      setSelectedRow(null);
-      fetchNumbers();
-    } catch {
+      setSelectedLanguage(null);
+      fetchLanguages();
+    } catch (err: any) {
       toast({
         variant: "destructive",
-        title: "Operation failed",
-        description: "Something went wrong",
+        title: "Operation Failed",
+        description: err?.response?.data?.message || "Something went wrong",
       });
     }
   };
@@ -123,55 +118,74 @@ const SupportMobile = () => {
     initialValues:
       mode === "edit"
         ? {
-            country_code: selectedRow?.country_code,
-            number: selectedRow?.number,
+            sign: selectedLanguage?.sign,
+            language_code: selectedLanguage?.language_code,
+            language: selectedLanguage?.language,
+            translated: selectedLanguage?.translated,
           }
         : {
-            country_code: "+91",
-            number: "",
+            sign: "",
+            language_code: "",
+            language: "",
+            translated: "",
           },
 
     fields: [
       {
-        name: "country_code",
-        label: "Country Code",
+        name: "sign",
+        label: "Sign",
         type: "text",
         required: true,
       },
       {
-        name: "number",
-        label: "Mobile Number",
+        name: "language_code",
+        label: "Language Code",
         type: "text",
         required: true,
+      },
+      {
+        name: "language",
+        label: "Language",
+        type: "text",
+        required: true,
+      },
+      {
+        name: "translated",
+        label: "Translated",
+        type: "text",
+        required: true,
+        gridColumn: "span 2",
       },
     ],
 
     onSubmit: handleSubmit,
     onCancel: () => {
       setMode("list");
-      setSelectedRow(null);
+      setSelectedLanguage(null);
     },
   };
 
-  const tableConfig = SupportWhatsappColumns(handleEdit, handleDelete);
+  const tableConfig = LanguageColumns(handleEdit, handleDelete);
 
   /* UI */
 
   return (
     <div className="space-y-6">
+      {/* Header */}
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold tracking-tight">SUPPORT MOBILE</h1>
+        <h1 className="text-3xl font-bold tracking-tight">LANGUAGE</h1>
 
         {mode === "list" && (
           <button
             onClick={() => setMode("add")}
             className="bg-red-500 text-white px-4 py-2 rounded text-sm font-semibold"
           >
-            + Add Mobile Number
+            + Add Language
           </button>
         )}
       </div>
 
+      {/* Content */}
       {mode === "list" ? (
         <div className="rounded-lg border bg-white p-6 shadow-sm">
           <DynamicTable
@@ -183,7 +197,7 @@ const SupportMobile = () => {
         </div>
       ) : (
         <div className="flex justify-center items-center min-h-[60vh]">
-          <div className="w-full max-w-xl rounded-lg border bg-white p-6 shadow-sm">
+          <div className="w-full max-w-2xl rounded-lg border bg-white p-6 shadow-sm">
             <DynamicForm config={formConfig} />
           </div>
         </div>
@@ -192,4 +206,4 @@ const SupportMobile = () => {
   );
 };
 
-export default SupportMobile;
+export default Language;

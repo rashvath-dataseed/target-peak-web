@@ -10,6 +10,7 @@ const NotFound = lazy(() => import("@/pages/auth/NotFound"));
 // Dashboard routes
 import { dashboardRoutes, TokenDetails } from "@/pages/dashboard";
 import Banners from "@/pages/settings/Banners";
+import Language from "@/pages/support/Language";
 
 // Module routes (Refactored)
 const AllData = lazy(() => import("@/pages/users/AllData"));
@@ -347,6 +348,11 @@ export const routes = [
   {
     path: "/settings/support-ai",
     element: SupportAi, // Fixed typo in previous file content which mapped SupportAi to SupportMail
+    roles: ["super_admin"],
+  },
+  {
+    path: "/settings/language",
+    element: Language,
     roles: ["super_admin"],
   },
   // Fallback

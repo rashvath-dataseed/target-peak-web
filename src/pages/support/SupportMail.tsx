@@ -21,7 +21,7 @@ const SupportMail = () => {
   const [mode, setMode] = useState<"list" | "add" | "edit">("list");
   const [selectedMail, setSelectedMail] = useState<SupportMailRow | null>(null);
 
-  /* FETCH LIST */
+  /* ================= FETCH ================= */
 
   const fetchEmails = async () => {
     try {
@@ -39,7 +39,7 @@ const SupportMail = () => {
     fetchEmails();
   }, []);
 
-  /* ACTIONS */
+  /* ================= ACTIONS ================= */
 
   const handleEdit = (row: SupportMailRow) => {
     setSelectedMail(row);
@@ -52,7 +52,7 @@ const SupportMail = () => {
     fetchEmails();
   };
 
-  /* FORM SUBMIT */
+  /* ================= SUBMIT ================= */
 
   const handleSubmit = async (formData: any) => {
     try {
@@ -74,7 +74,7 @@ const SupportMail = () => {
     }
   };
 
-  /* FORM CONFIG */
+  /* ================= FORM CONFIG ================= */
 
   const formConfig: FormConfig = {
     columns: 1,
@@ -110,6 +110,8 @@ const SupportMail = () => {
 
   const tableConfig = SupportMailColumns(handleEdit, handleDelete);
 
+  /* ================= UI ================= */
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -133,12 +135,14 @@ const SupportMail = () => {
             columns={tableConfig.columns}
             data={data}
             actions={tableConfig.actions}
-            // loading={loading}
+            loading={loading}
           />
         </div>
       ) : (
-        <div className="rounded-lg border bg-white p-6 shadow-sm max-w-xl">
-          <DynamicForm config={formConfig} />
+        <div className="flex justify-center items-center min-h-[60vh]">
+          <div className="w-full max-w-xl rounded-lg border bg-white p-6 shadow-sm">
+            <DynamicForm config={formConfig} />
+          </div>
         </div>
       )}
     </div>

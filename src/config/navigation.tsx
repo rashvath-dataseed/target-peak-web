@@ -260,6 +260,13 @@ export const APP_NAVIGATION: NavItem[] = [
         component: lazy(() => import("@/pages/settings/Stream")),
       },
       {
+        id: "settings-language",
+        title: "Language",
+        path: "/settings/language",
+        // D:\Peak\Target peak\src\pages\modules\Stream.tsx
+        component: lazy(() => import("@/pages/support/Language")),
+      },
+      {
         id: "settings-support-category",
         title: "Support Category",
         path: "/settings/support-category",

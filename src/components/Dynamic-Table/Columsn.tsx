@@ -152,3 +152,87 @@ export const SupportMailColumns = (
     },
   ],
 });
+
+
+// LANGUAGE
+export type LanguageRow = {
+  id: number;
+  sign: string;
+  language_code: string;
+  language: string;
+  translated: string;
+};
+
+export const LanguageColumns = (
+  onEdit: (row: LanguageRow) => void,
+  onDelete: (row: LanguageRow) => void
+): {
+  columns: Column<LanguageRow>[];
+  actions: Action<LanguageRow>[];
+} => ({
+  columns: [
+    {
+      key: "srNo",
+      header: "Sr.No.",
+      render: (_, index) => index + 1,
+    },
+    { key: "sign", header: "Sign" },
+    { key: "language_code", header: "Language Code" },
+    { key: "language", header: "Language" },
+    { key: "translated", header: "Translated" },
+  ],
+
+  actions: [
+    {
+      label: <Pencil size={14} />,
+      onClick: onEdit,
+      className: "bg-blue-500 text-white",
+    },
+    {
+      label: <Trash2 size={14} />,
+      onClick: onDelete,
+      className: "bg-red-500 text-white",
+    },
+  ],
+});
+
+
+// SUPPORT MOBILE NUMBER and WHATSAPP NUMBER
+export type SupportWhatsappRow = {
+  id: number;
+  country_code: string;
+  number: string;
+  type: string;
+};
+
+export const SupportWhatsappColumns = (
+  onEdit: (row: SupportWhatsappRow) => void,
+  onDelete: (row: SupportWhatsappRow) => void
+): {
+  columns: Column<SupportWhatsappRow>[];
+  actions: Action<SupportWhatsappRow>[];
+} => ({
+  columns: [
+    {
+      key: "srNo",
+      header: "Sr.No.",
+      render: (_, index) => index + 1,
+    },
+    { key: "country_code", header: "Country Code" },
+    { key: "number", header: "Number" },
+    { key: "type", header: "Type" },
+  ],
+
+  actions: [
+    {
+      label: <Pencil size={14} />,
+      onClick: onEdit,
+      className: "bg-blue-500 text-white",
+    },
+    {
+      label: <Trash2 size={14} />,
+      onClick: onDelete,
+      className: "bg-red-500 text-white",
+    },
+  ],
+});
