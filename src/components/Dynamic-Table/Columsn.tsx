@@ -50,14 +50,13 @@ export const SupportCategoryColumns: {
 export type BannerRow = {
   bannerId: number;
   sansthaName: string;
-  // page: string;
+  page: string;
   type: string;
   uploadType: string;
   validFrom: string;
   validTo: string;
   mediaUrl: string;
 };
-// Banner Columns
 export const BannerColumns = (
   onEdit: (row: any) => void,
   onDelete: (row: any) => void
@@ -72,7 +71,7 @@ export const BannerColumns = (
       render: (_, index) => index + 1,
     },
     { key: "sansthaName", header: "Sanstha Name" },
-    // { key: "page", header: "Page" },
+    { key: "page", header: "Page" },
     { key: "type", header: "Type" },
     { key: "uploadType", header: "Upload Type" },
     { key: "validFrom", header: "Valid From" },
@@ -87,6 +86,56 @@ export const BannerColumns = (
           className="h-10 w-16 object-cover rounded"
         />
       ),
+    },
+  ],
+
+  actions: [
+    {
+      label: <Pencil size={14} />,
+      onClick: onEdit,
+      className: "bg-blue-500 text-white",
+    },
+    {
+      label: <Trash2 size={14} />,
+      onClick: onDelete,
+      className: "bg-red-500 text-white",
+    },
+  ],
+});
+//SUPPORT EMAIL
+export type SupportMailRow = {
+  id: number;
+  emailId: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export const SupportMailColumns = (
+  onEdit: (row: SupportMailRow) => void,
+  onDelete: (row: SupportMailRow) => void
+): {
+  columns: Column<SupportMailRow>[];
+  actions: Action<SupportMailRow>[];
+} => ({
+  columns: [
+    {
+      key: "srNo",
+      header: "Sr.No.",
+      render: (_, index) => index + 1,
+    },
+    {
+      key: "emailId",
+      header: "Support Email",
+    },
+    {
+      key: "createdAt",
+      header: "Created At",
+      render: (row) => new Date(row.createdAt).toLocaleString(),
+    },
+    {
+      key: "updatedAt",
+      header: "Updated At",
+      render: (row) => new Date(row.updatedAt).toLocaleString(),
     },
   ],
 
