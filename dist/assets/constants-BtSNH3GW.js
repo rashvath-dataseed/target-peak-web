@@ -1,0 +1,1 @@
+const r={totalUsers:0,totalAdmins:0,activeCourses:0,revenue:0},e=t=>new Intl.NumberFormat("en-IN",{style:"currency",currency:"INR",maximumFractionDigits:0}).format(t),n=t=>new Intl.NumberFormat("en-IN").format(t),a=t=>new Date(t).toLocaleString("en-IN",{day:"2-digit",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit"});export{r as A,e as a,a as b,n as f};
