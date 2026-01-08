@@ -9,3 +9,4 @@ export const sendOtp = (payload: any) => {
 export const verifyOtp = (payload: any) => {
   return apiClient.post("/auth/verify-otp", payload);
 };
+// 
