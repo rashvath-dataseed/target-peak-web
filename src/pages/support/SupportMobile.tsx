@@ -137,11 +137,19 @@ const SupportMobile = () => {
         label: "Country Code",
         type: "text",
         required: true,
+        validation: {
+          maxLength: 5,
+          min: 5,
+        },
       },
       {
         name: "number",
         label: "Mobile Number",
-        type: "text",
+        type: "number",
+        validation: {
+          maxLength: 10,
+          min: 1,
+        },
         required: true,
       },
     ],

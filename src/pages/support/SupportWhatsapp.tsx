@@ -134,6 +134,10 @@ const SupportWhatsapp = () => {
         label: "WhatsApp Number",
         type: "text",
         required: true,
+        validation: {
+          maxLength: 10,
+          min: 1,
+        },
       },
     ],
 

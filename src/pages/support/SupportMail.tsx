@@ -95,9 +95,13 @@ const SupportMail = () => {
       {
         name: "emailId",
         label: "Support Email",
-        type: "text",
+        type: "email",
         required: true,
         placeholder: "Enter support email",
+        validation: {
+          maxLength: 30,
+          min: 5,
+        },
       },
     ],
 

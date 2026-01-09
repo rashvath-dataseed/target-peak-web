@@ -132,7 +132,7 @@ const Login: React.FC = () => {
                   <Phone className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   <Input
                     className="h-10 pl-10"
-                    type="tel"
+                    type="number"
                     value={mobile}
                     onChange={(e) => setMobile(e.target.value)}
                     placeholder="Enter mobile number"
