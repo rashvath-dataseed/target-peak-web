@@ -236,3 +236,41 @@ export const SupportWhatsappColumns = (
     },
   ],
 });
+
+// SUPPORT AI
+export type SupportAiRow = {
+  id: number;
+  question: string;
+  answer: string;
+};
+
+export const SupportAiColumns = (
+  onEdit: (row: SupportAiRow) => void
+): {
+  columns: Column<SupportAiRow>[];
+  actions: Action<SupportAiRow>[];
+} => ({
+  columns: [
+    {
+      key: "srNo",
+      header: "Sr.No.",
+      render: (_, index) => index + 1,
+    },
+    {
+      key: "question",
+      header: "Question",
+    },
+    {
+      key: "answer",
+      header: "Answer",
+    },
+  ],
+
+  actions: [
+    {
+      label: <Pencil size={14} />,
+      onClick: onEdit,
+      className: "bg-blue-500 text-white",
+    },
+  ],
+});

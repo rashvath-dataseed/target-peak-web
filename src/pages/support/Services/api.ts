@@ -77,3 +77,46 @@ export const getAllSupportNumbers = (type: "whatsapp" | "mobile") => {
 export const deleteSupportNumber = (id: number) => {
   return apiClient.delete(`/support/mob-num/delete/${id}`);
 };
+
+//support ai
+
+/* CREATE */
+export const createQuestionAnswer = (payload: {
+  language_id: number;
+  question: string;
+  answer: string;
+}) => {
+  return apiClient.post("/support/ai/create-que-ans", payload);
+};
+
+/* UPDATE */
+export const updateQuestionAnswer = (
+  id: number,
+  payload: {
+    language_id: number;
+    question: string;
+    answer: string;
+  }
+) => {
+  return apiClient.put(`/support/ai/update-que-ans/${id}`, payload);
+};
+
+/* GET ALL QUESTIONS */
+export const getAllQuestions = (language_id: number) => {
+  return apiClient.get("/support/ai/get-all-questions", {
+    params: { language_id },
+  });
+};
+
+/* GET QUESTION + ANSWER BY ID */
+export const getQuestionAnswerById = (id: number) => {
+  return apiClient.get(`/support/ai/get-que-ans-id/${id}`);
+};
+
+export const getSupportAiContent = (languageId: number) =>
+  apiClient.get(`/support/ai/get-all-questions?language_id=${languageId}`);
+
+export const getAnswerByQuestionId = (languageId: number, questionId: number) =>
+  apiClient.get(
+    `/support/ai/get-ans-que-id?language_id=${languageId}&question_id=${questionId}`
+  );
